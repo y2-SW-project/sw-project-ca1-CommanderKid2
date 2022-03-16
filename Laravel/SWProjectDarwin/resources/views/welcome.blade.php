@@ -7,6 +7,7 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
+        <link rel="stylesheet" href="/css/app.css">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <!-- Styles -->
@@ -27,7 +28,7 @@
         <a href="/register"> Register</a>
         <a href="/register"> About</a>
 
-        {{-- <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-light bg-light">
 
               <a class="navbar-brand" href="#">Navbar</a>
 
@@ -46,6 +47,6 @@
                 </ul>
 
             </div>
-          </nav> --}}
+          </nav>
     </body>
 </html>

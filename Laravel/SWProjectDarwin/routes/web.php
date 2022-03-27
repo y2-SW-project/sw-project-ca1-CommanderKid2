@@ -24,13 +24,16 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [LoginController::class, 'login']);
-Route::get('/login', [LoginController::class, 'login']);
-Route::get('/login', [LoginController::class, 'login']);
-Route::get('/login', [LoginController::class, 'login']);
+Route::get('/about', [LoginController::class, 'about']);
+Route::get('/register', [LoginController::class, 'register']);
+Route::get('/controller', [LoginController::class, 'controller']);
+Route::get('image/{main}', 'HomeController@displayImage')->name('image.displayImage');
 
 
 
 // Route::get('/login', [LoginController::class, 'login']);
+Route::get('/admin/home', [App\Http\Controller\Admin\HomeController::class, 'index'])->name('admin.home');
+Route::get('/user/home', [App\Http\Controller\Admin\HomeController::class, 'index'])->name('user.home');
 
 Route::get('about', 'App\Http\Controllers\AboutController@about');
 

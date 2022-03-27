@@ -106,7 +106,7 @@
             <div class="row align-items-center my-5">
                 <div class="col-md-5">
 
-                    <img src={{ URL::to('/storage/imgs/1.svg') }} width="500" height="00">
+                    <img src={{ URL::to('/storage/imgs/2.svg') }} width="500" height="00">
 
 
                 </div>

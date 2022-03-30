@@ -5,8 +5,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\RegisterController;
+use App\Http\Middleware\Authenticate;
 
-
+// namespace App\Http\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,20 +24,30 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/login', function(){
+//     return view( 'login' );
+// });
+
+//Auth::routes();
+
 Route::get('/login', [LoginController::class, 'login']);
-Route::get('/about', [LoginController::class, 'about']);
-Route::get('/register', [LoginController::class, 'register']);
-Route::get('/controller', [LoginController::class, 'controller']);
+Route::get('/about', [aboutController::class, 'about']);
+Route::get('/register', [registerController::class, 'register']);
+Route::get('/controller', [controlllerController::class, 'controller']);
 Route::get('image/{main}', 'HomeController@displayImage')->name('image.displayImage');
 
 
 
-// Route::get('/login', [LoginController::class, 'login']);
+//Route::get('/login', [LoginController::class, 'login']);
 Route::get('/admin/home', [App\Http\Controller\Admin\HomeController::class, 'index'])->name('admin.home');
-Route::get('/user/home', [App\Http\Controller\Admin\HomeController::class, 'index'])->name('user.home');
+Route::get('/user/home', [App\Http\Controller\User\HomeController::class, 'index'])->name('user.home');
 
 Route::get('about', 'App\Http\Controllers\AboutController@about');
 
 Route::get('register', function (){
     return view('register');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

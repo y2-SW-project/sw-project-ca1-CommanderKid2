@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header bg-warning">
                     Product
                 </div>
                 <div class="card-body">
@@ -31,7 +31,7 @@
                             <td>{{ $product->receiver}}</td>
                             <td>{{ $product->image_location}}</td>
 
-                            <td>
+                            {{-- <td>
                                 <a href="{{route('user.product.show', $product->id) }}" class="btn btn-primary">View</a>
                                 <a href="{{route('user.product.edit', $product->id) }}" class="btn btn-warning">Edit</a>
                             </form style="display:inline-block" method="POST"
@@ -39,7 +39,7 @@
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <button type="submit" class="form-cotrol btn btn-danger">Delete</button>
-                            </td>
+                            </td> --}}
                         </tr>
                         @endforeach
                     </tbody>

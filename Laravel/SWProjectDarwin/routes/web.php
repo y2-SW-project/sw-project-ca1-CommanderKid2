@@ -43,17 +43,17 @@ Route::get('/admin/home', [App\Http\Controller\Admin\HomeController::class, 'ind
 Route::get('/user/home', [App\Http\Controller\User\HomeController::class, 'index'])->name('user.home');
 
 /* User */
-Route::get('/user/products/', [UserProductController::class, 'index'])->name('user.product.index');
-Route::get('/user/products/{id}', [UserProductController::class, 'show'])->name('user.product.show');
+Route::get('/user/products/', [UserProductController::class, 'index'])->name('user.products.index');
+Route::get('/user/products/{id}', [UserProductController::class, 'show'])->name('user.products.show');
 
 /* Admin */
 Route::get('/admin/products/', [AdminProductController::class, 'index'])->name('admin.products.index');
-Route::get('/admin/products/create', [AdminProductController::class, 'create'])->name('admin.product.create');
-Route::get('/admin/products/{id}', [AdminProductController::class, 'show'])->name('admin.product.show');
-Route::post('/admin/products/store', [AdminProductController::class, 'store'])->name('admin.product.store');
-Route::get('/admin/products/{id}/edit', [AdminProductController::class, 'edit'])->name('admin.product.edit');
-Route::put('/admin/products/{id}', [AdminProductController::class, 'update'])->name('admin.product.update');
-Route::delete('/admin/products/{id}', [AdminProductController::class, 'destroy'])->name('admin.product.destroy');
+Route::get('/admin/products/create', [AdminProductController::class, 'create'])->name('admin.products.create');
+Route::get('/admin/products/{id}', [AdminProductController::class, 'show'])->name('admin.products.show');
+Route::post('/admin/products/store', [AdminProductController::class, 'store'])->name('admin.products.store');
+Route::get('/admin/products/{id}/edit', [AdminProductController::class, 'edit'])->name('admin.products.edit');
+Route::put('/admin/products/{id}', [AdminProductController::class, 'update'])->name('admin.products.update');
+Route::delete('/admin/products/{id}', [AdminProductController::class, 'destroy'])->name('admin.products.destroy');
 
 Route::get('register', function (){
     return view('register');

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Auth;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('user.products.index', [
+        return view('admin.products.index', [
             'products' => $products
         ]);
     }
@@ -28,7 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.create');
     }
 
     /**
@@ -39,7 +39,35 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            //    'image_name' => 'mimes:jpeg,bmp,png',
+                'name_drone' => 'required',
+                'battery' =>'required|max:500',
+                'motors' => 'required|max:500',
+                'the_flight_controller' => 'required|max:500',
+                'receiver' =>'required|max:500',
+                'image_location' => 'file|image'
+            ]);
+
+            $product_image= $request->file('product_image');
+            $filename = $product_image->hashName();
+
+            $path = $product_image->storeAs('public/images', $filename);
+
+            // if validation passes create the new book
+            $product = new Product();
+            $product->name_drone = $request->input('name_drone');
+            $product->battery = $request->input('battery');
+            $product->motors = $request->input('motors');
+            $product->the_flight_controller = $request->input('the_flight_controller');
+            $product->receiver = $request->input('receiver');
+            $product->image_location =  $filename;
+            $product->save();
+
+
+
+            return redirect()->route('admin.products.index');
     }
 
     /**
@@ -82,7 +110,26 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+              // first get the existing product that the user is update
+              $product = Product::findOrFail($id);
+              $request->validate([
+                'name_drone' => 'required',
+                'battery' =>'required|max:500',
+                'motors' => 'required|max:500',
+                'the_flight_controller' => 'required|max:500',
+                'receiver' =>'required|max:500',
+                'image_location' => 'file|image'
+              ]);
+
+              // if validation passes then update existing product
+              $product->name_drone = $request->input('name_drone');
+              $product->battery = $request->input('battery');
+              $product->motors = $request->input('motors');
+              $product->the_flight_controller = $request->input('the_flight_controller');
+              $product->receiver = $request->input('receiver');
+              $product->save();
+
+              return redirect()->route('admin.products.index');
     }
 
     /**

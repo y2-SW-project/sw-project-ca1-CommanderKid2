@@ -11,8 +11,8 @@ class ProductController extends Controller
 
 public function __construct()
 {
-    $this->middleware('auth');
-    $this->middleware('role:user, admin');
+    // $this->middleware('auth');
+    // $this->middleware('role:user, admin');
 }
     /**
      * Display a listing of the resource.
